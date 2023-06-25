@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import Nav from './components/Nav'
+
 
 import Search from './components/Search'
 
