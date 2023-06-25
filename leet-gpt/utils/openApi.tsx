@@ -31,10 +31,10 @@ const runPrompt = async () => {
     console.log(response.data.choices[0].text);
 
     const parasableJSONResponse = response.data.choices[0].text;
-    const parsedResponse = JSON.parese(parasableJSONResponse);
+    const parsedResponse = JSON.parse(parasableJSONResponse);
 
-    console.log("Question: " , parsedResponse.Q;
-    console.log("Answer: ", paresedRes)
+    console.log("Question: " , parsedResponse.Q);
+    console.log("Answer: ", parsedResponse.A)
 };
 
 runPrompt();
