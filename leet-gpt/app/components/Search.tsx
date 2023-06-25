@@ -15,20 +15,26 @@ export default function Search() {
     const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
         //send the submit value to open AI API and async await get the value
-
+        setValue('text')
         //after we get the value from open AI we need to send this to the result component
     }
 
 
   return (
     <div>
-        Search
+        
         <form onSubmit={handleSubmit}>
-            <input type='text' placeholder='enter the problem text' onChange={handleChange}/>
+            <input type='text' placeholder='enter your leet code problem' onChange={handleChange}   className="py-4 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500 "
+/>
             <br />
-            <button type='submit'>Search</button>
+            
+            <br/>
+            <button className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-600" type='submit'>
+                Search
+            </button>
         </form>
-        <Result searchText={'Hello I am search text'}/>
+        {value ? <Result searchText={'Hello I am search text'}/> : ''}
+        
     </div>
   )
 }
