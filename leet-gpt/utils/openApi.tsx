@@ -1,13 +1,11 @@
 const {Configuration, OpenAIApi}  = require('openai');
 
 const config = new Configuration({
-    apiKey: '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'
+    apiKey: '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'
 });
-//token: pieces of words used for natural language processing, 1 token = 4 charachters
 
 //to test this cd utils , then node openApi.tsx
 
-//create openAI instance
 
 const openai = new OpenAIApi(config);
 
@@ -21,14 +19,18 @@ const runPrompt = async () => {
         }
     `;
 
+    const hintPrompt = `` //prompt for hint search
+    
+    const solutionPrompt = `` //prompt for solution search
+
     const response = await openai.createCompletion({
-        model:"text-curie-001",
+        model:"text-davinci-003",
         prompt: prompt,
-        max_tokens: 1,
+        max_tokens: 100,
         temperature: 0.6,
     });
 
-    console.log(response.data.choices[0].text);
+    console.log(response.data);
 
     const parasableJSONResponse = response.data.choices[0].text;
     const parsedResponse = JSON.parse(parasableJSONResponse);

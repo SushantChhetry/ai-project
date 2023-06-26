@@ -23,13 +23,13 @@ export default function Search() {
   return (
     <div>
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='container flex flex-col justify-center align-middle'>
             <input type='text' placeholder='enter your leet code problem' onChange={handleChange}   className="py-4 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500 "
 />
             <br />
             
             <br/>
-            <button className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-600" type='submit'>
+            <button className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-600 max-w-xs:" type='submit'>
                 Search
             </button>
         </form>
