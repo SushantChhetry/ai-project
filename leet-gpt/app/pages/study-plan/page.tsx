@@ -2,9 +2,65 @@ import BackHome from "@/app/components/BackHome"
 
 export default function page() {
   return (
-    <div className='flex flex-col items-center min-h-screen p-24'>
-        <div className="p-6">
+    <div className='flex flex-col items-center min-h-screen p-2 md:p-6 lg:p-12'>
+        <div className="p-3">
       <h1 className="mb-3 text-2xl font-bold">A Comprehensive Study Plan for Interview Preparation: Your Path to Success</h1>
+      
+       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="p-4 bg-gray-200 rounded-md hover:bg-green-300">
+          <h2 className="mb-2 text-xl font-bold">Phase 1: Research and Planning</h2>
+          <ul className="pl-6 list-disc">
+            <li>Research the company and interview process</li>
+            <li>Identify the key topics and technologies to focus on</li>
+            <li>Create a study plan and set realistic goals</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-gray-200 rounded-md hover:bg-green-300">
+          <h2 className="mb-2 text-xl font-bold">Phase 2: Fundamentals</h2>
+          <ul className="pl-6 list-disc">
+            <li>Review data structures and algorithms</li>
+            <li>Practice solving coding problems</li>
+            <li>Learn and implement common algorithms</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-gray-200 rounded-md hover:bg-green-300">
+          <h2 className="mb-2 text-xl font-bold">Phase 3: System Design</h2>
+          <ul className="pl-6 list-disc">
+            <li>Study system design concepts</li>
+            <li>Review architecture patterns</li>
+            <li>Practice designing scalable systems</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-gray-200 rounded-md hover:bg-green-300">
+          <h2 className="mb-2 text-xl font-bold">Phase 4: Mock Interviews</h2>
+          <ul className="pl-6 list-disc">
+            <li>Participate in mock interviews</li>
+            <li>Get feedback and improve problem-solving skills</li>
+            <li>Practice explaining your thought process</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-gray-200 rounded-md hover:bg-green-300">
+          <h2 className="mb-2 text-xl font-bold">Phase 5: Review and Refine</h2>
+          <ul className="pl-6 list-disc">
+            <li>Revisit weak areas and practice more</li>
+            <li>Refine your answers to common interview questions</li>
+            <li>Stay updated with industry trends</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-gray-200 rounded-md hover:bg-green-300">
+          <h2 className="mb-2 text-xl font-bold">Phase 6: Final Preparations</h2>
+          <ul className="pl-6 list-disc">
+            <li>Review your accomplishments and experiences</li>
+            <li>Prepare questions to ask the interviewer</li>
+            <li>Practice good interview etiquette and body language</li>
+          </ul>
+        </div>
+      </div>
       
       <div className="my-4">
         <p className="text-lg">
