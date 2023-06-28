@@ -1,4 +1,5 @@
 import BackHome from "@/app/components/BackHome"
+import Link from "next/link"
 
 
 export default function Page() {
@@ -26,6 +27,11 @@ export default function Page() {
       <p className="mb-4 text-lg">
         Happy coding and happy problem-solving with LeetGPT!
       </p>
+    </div>
+
+    <div className="container flex justify-center row-span-2 py-5 gap-14">
+      <h2 className="font-mono text-xl font-semibold hover:text-green-600 hover:underline"><Link href= "https://leetcode.com/" target="_blank">Leet Code </Link></h2>
+      <h2 className="font-mono text-xl font-semibold hover:text-green-600 hover:underline" ><Link href= "https://openai.com/" target="_blank">Open AI </Link></h2>
     </div>
     <BackHome/>
     </div>
