@@ -2,7 +2,7 @@
 
 import React from "react";
 import Result from "./Result";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Search() {
   const [formData, setFormData] = useState({ type: "", prompt: "" });
@@ -10,12 +10,10 @@ export default function Search() {
   const [searchVal, setSearchVal] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(`change: ${event.target.value}`);
     setSearchVal(event.target.value);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(`radio value: ${event.target.value}`);
     setSelectedVal(event.target.value);
   };
 
@@ -25,8 +23,6 @@ export default function Search() {
       type: selectedVal,
       prompt: searchVal,
     });
-
-    console.log(formData);
   };
 
   return (
@@ -79,7 +75,7 @@ export default function Search() {
           Search
         </button>
       </form>
-      {formData ? <Result searchText={formData} /> : ""}
+      {formData.prompt !== "" ? <Result searchText={formData} /> : ""}
     </div>
   );
 }
