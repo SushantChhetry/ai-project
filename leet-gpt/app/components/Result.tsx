@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
-    searchText : string
-}
+  searchText: any;
+};
 
-export default function Result({searchText} : Props) {
-  return (
-    <div>Result : {searchText}</div>
-  )
+export default function Result({ searchText }: Props) {
+  console.log(searchText);
+  return <div>Result : {searchText.prompt}</div>;
 }

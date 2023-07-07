@@ -10,13 +10,13 @@ export default function Search() {
   const [searchVal, setSearchVal] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(`change: ${event.target.name}`);
-    setSearchVal(event.target.name);
+    console.log(`change: ${event.target.value}`);
+    setSearchVal(event.target.value);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(`radio value: ${event.target.value}`);
-    setSelectedVal(event.target.name);
+    setSelectedVal(event.target.value);
   };
 
   const handleSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -79,7 +79,7 @@ export default function Search() {
           Search
         </button>
       </form>
-      {formData ? <Result searchText={"Hello I am search text"} /> : ""}
+      {formData ? <Result searchText={formData} /> : ""}
     </div>
   );
 }
