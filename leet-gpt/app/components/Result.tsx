@@ -10,9 +10,9 @@ export default function Result({ searchText }: Props) {
 
   useEffect(() => {
     console.log(`component rendered`);
-    console.log(search);
+    setSearch(searchText);
     runPrompt();
-  }, [search]);
+  }, [searchText]);
 
   return (
     <div className=" font-mono h1- font-bold flex justify-center py-4 bg-gray-300 my-4 flex-col items-center">

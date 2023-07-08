@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const config = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 //to test this cd utils , then node openApi.tsx
