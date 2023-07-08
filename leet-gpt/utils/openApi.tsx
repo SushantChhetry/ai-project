@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const apiKey = process.env.OPENAI_API_KEY;
 
 const config = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 //to test this cd utils , then node openApi.tsx
@@ -31,12 +31,10 @@ const runPrompt = async () => {
     temperature: 0.6,
   });
 
-  console.log(response.data);
-
   const parasableJSONResponse = response.data.choices[0].text;
   const parsedResponse = JSON.parse(parasableJSONResponse);
 
-  console.log(parsedResponse);
+  return parsedResponse;
 
   //   console.log("Question: ", parsedResponse.Q);
   //   console.log("Answer: ", parsedResponse.A);

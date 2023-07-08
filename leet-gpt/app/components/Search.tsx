@@ -26,22 +26,19 @@ export default function Search() {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit}
-        className="container flex flex-col justify-center align-middle"
-      >
+    <div className="container mx-auto px-4 py-8">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <input
           type="text"
-          placeholder="enter your leet code problem"
+          placeholder="Enter your LeetCode problem"
           onChange={handleChange}
-          className="py-4 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500 "
+          className="py-4 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500"
           required
         />
 
-        <div className="flex justify-center row-span-2 pt-4 align-middle gap-7">
+        <div className="flex justify-center items-center mt-4 space-x-7">
           <div>
-            <label htmlFor="hint">
+            <label htmlFor="hint" className="flex items-center">
               <input
                 type="radio"
                 id="hint"
@@ -49,13 +46,13 @@ export default function Search() {
                 value="hint"
                 onChange={handleRadioChange}
                 required
+                className="mr-2"
               />
               Hint
             </label>
           </div>
           <div>
-            <label htmlFor="solution">
-              Solution
+            <label htmlFor="solution" className="flex items-center">
               <input
                 type="radio"
                 id="solution"
@@ -63,19 +60,22 @@ export default function Search() {
                 value="solution"
                 onChange={handleRadioChange}
                 required
+                className="mr-2"
               />
+              Solution
             </label>
           </div>
         </div>
-        <br />
+
         <button
-          className="max-w-sm px-4 py-2 font-bold text-white bg-green-500 border-b-4 border-green-700 rounded w hover:bg-green-400 hover:border-green-500"
+          className="max-w-sm px-4 py-2 mt-4 font-bold text-white bg-green-500 border-b-4 border-green-700 rounded w hover:bg-green-400 hover:border-green-500"
           type="submit"
         >
           Search
         </button>
       </form>
-      {formData.prompt !== "" ? <Result searchText={formData} /> : ""}
+
+      {formData.prompt !== "" && <Result searchText={formData} />}
     </div>
   );
 }
