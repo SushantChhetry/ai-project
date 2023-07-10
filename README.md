@@ -6,7 +6,7 @@ LeetGPT is a web application built with Next.js that leverages the OpenAI API to
 
 - Seamless integration with the OpenAI API to generate hints for LeetCode problems.
 - User-friendly interface for inputting LeetCode problem descriptions and receiving hints.
-- Responsive design for optimal user experience on desktop and mobile devices.
+- Responsive design optimal user experience on desktop and mobile devices.
 - Efficient code execution to provide quick and accurate hints.
 
 ## Prerequisites
