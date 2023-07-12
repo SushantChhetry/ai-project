@@ -30,7 +30,7 @@ export default function Search() {
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <input
           type="text"
-          placeholder="Enter your LeetCode problem"
+          placeholder="Enter your problem"
           onChange={handleChange}
           className="py-4 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500"
           required

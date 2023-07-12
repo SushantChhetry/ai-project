@@ -18,16 +18,16 @@ export default function Result({ searchText }: Props) {
 
     const fetchData = async () => {
       setSearch(searchText);
-      // let results = await runPrompt();
-      // setResult(results);
-      // console.log(result);
+      let results = await runPrompt(searchText);
+      setResult(results);
+      console.log(result);
     };
 
     fetchData();
   }, [searchText]);
 
   return (
-    <div className="bg-gray-200 p-4 rounded shadow-md flex flex-col justify-center items-center my-3">
+    <div className="bg-gray-200 p-14 rounded shadow-md flex flex-col justify-center items-center my-3">
       <div className="font-bold mb-2 text-3xl">Result</div>
       {result ? (
         <Link
