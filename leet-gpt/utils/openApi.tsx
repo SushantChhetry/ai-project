@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const apiKey = process.env.OPENAI_API_KEY;
 
 const config = new Configuration({
-  apiKey: "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", //note this will get deleted everytime you push it to github
+  apiKey: "", //note this will get deleted everytime you push it to github
 });
 
 //to test this cd utils , then node openApi.tsx
@@ -11,21 +11,30 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 const runPrompt = async (searchText: any) => {
-  //here we gave the ai a more detailed prompt with the strucutre we want
+  const type = searchText.type;
+
+  const problem = searchText.prompt;
+
   const prompt = `
-        Give me a 500 char ${searchText.type} on solving the ${searchText.prompt} leetcode question in the following formatting: 
-        {
-            "Q": "link to the leet code problem",
-            "A": "${searchText.type} to the leet code problem"
-        }
-    `;
+    Give me a ${type} on solving the ${problem} leetcode question in the following format : 
+    "{
+        \\"Q\\": "link to the ${problem}",
+        \\"A\\": ${
+          type === "solution" ? "give me JS code of solution" : '"' + type + '"'
+        } to the ${problem}
+    }"
+  `;
+
+  console.log(prompt);
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
-    max_tokens: 500,
+    max_tokens: type === "hint" ? 500 : undefined,
     temperature: 0.6,
   });
+
+  console.log(response.data.choices[0].text);
 
   const parasableJSONResponse = response.data.choices[0].text;
   let parsedResponse = "";
@@ -33,10 +42,10 @@ const runPrompt = async (searchText: any) => {
     ? (parsedResponse = JSON.parse(parasableJSONResponse))
     : console.log(`Error when getting response data  ${parasableJSONResponse}`);
 
-  return parsedResponse;
+  //   const parsedResponse = JSON.parse(response.data.choices[0].text);
+  //   console.log(parsedResponse);
 
-  //   console.log("Question: ", parsedResponse.Q);
-  //   console.log("Answer: ", parsedResponse.A);
+  return parsedResponse;
 };
 
 export default runPrompt;

@@ -8,19 +8,31 @@ type Props = {
 
 export default function Result({ searchText }: Props) {
   const [search, setSearch] = useState(searchText);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const [result, setResult] = useState({
-    Q: "https://leetcode.com/problems/merge-sorted-array/",
-    A: "Start by comparing the last elements of both arrays. Whichever array has the larger element, add it to the end of the merged array. Then, move the pointer of the array with the larger element back one step and repeat the same process.",
+    Q: "",
+    A: "",
   });
 
   useEffect(() => {
     console.log("component rendered");
 
     const fetchData = async () => {
-      setSearch(searchText);
-      let results = await runPrompt(searchText);
-      setResult(results);
-      console.log(result);
+      setIsLoading(true);
+      try {
+        setSearch(searchText);
+        let results = await runPrompt(searchText);
+        setResult(results);
+        console.log(result);
+      } catch (error) {
+        setIsError(true);
+        throw new Error(error);
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchData();
@@ -28,7 +40,9 @@ export default function Result({ searchText }: Props) {
 
   return (
     <div className="bg-gray-200 p-14 rounded shadow-md flex flex-col justify-center items-center my-3">
-      <div className="font-bold mb-2 text-3xl">Result</div>
+      <div className="font-bold mb-2 text-3xl">
+        {searchText.type === "hint" ? "Hint" : "Solution"}
+      </div>
       {result ? (
         <Link
           href={result.Q}
@@ -38,7 +52,13 @@ export default function Result({ searchText }: Props) {
           {search.prompt}
         </Link>
       ) : null}
-      <p className="mt-2">{result.A}</p>
+      {isLoading ? (
+        "Loading . . ."
+      ) : isError ? (
+        "Oops something went wrong . . ."
+      ) : (
+        <p className="mt-2">{result.A}</p>
+      )}
     </div>
   );
 }
