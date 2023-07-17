@@ -5,7 +5,7 @@ import Search from "./components/Search";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-screen p-24">
+    <main className="flex flex-col items-center min-h-screen p-20">
       <Image src={"/LEETGPT.png"} alt="logo" width={200} height={200} />
       <h1 className="text-4xl font-semibold">
         {" "}

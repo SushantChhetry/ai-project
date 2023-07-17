@@ -32,6 +32,7 @@ export default function Result({ searchText }: Props) {
         console.log(error);
       } finally {
         setIsLoading(false);
+        setIsError(false);
       }
     };
 
@@ -57,7 +58,19 @@ export default function Result({ searchText }: Props) {
       ) : isError ? (
         "Oops something went wrong . . ."
       ) : (
-        <p className="mt-2">{result.A}</p>
+        <p className="mt-2">
+          {searchText.type === "hint" ? (
+            result.A
+          ) : (
+            <Link
+              href={result.A}
+              className="hover:text-green-400 transition-colors duration-300"
+              target="_blank"
+            >
+              Click to see solution
+            </Link>
+          )}
+        </p>
       )}
     </div>
   );

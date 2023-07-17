@@ -1,9 +1,13 @@
+require("dotenv").config();
+
 const { Configuration, OpenAIApi } = require("openai");
 
-const apiKey = process.env.OPENAI_API_KEY;
+const apiUrl = process.env.NEXT_PUBLIC_API_KEY;
+
+console.log(apiUrl);
 
 const config = new Configuration({
-  apiKey: "", //note this will get deleted everytime you push it to github
+  apiKey: apiUrl, //note this will get deleted everytime you push it to github
 });
 
 //to test this cd utils , then node openApi.tsx
@@ -19,9 +23,11 @@ const runPrompt = async (searchText: any) => {
     Give me a ${type} on solving the ${problem} leetcode question in the following format : 
     "{
         \\"Q\\": "link to the ${problem}",
-        \\"A\\": ${
-          type === "solution" ? "give me JS code of solution" : '"' + type + '"'
-        } to the ${problem}
+        \\"A\\": "${
+          type === "solution"
+            ? `leetcode discussion link to solution of leetcode problem ${problem}`
+            : '"' + type + '"' + `to the ${problem}`
+        } "
     }"
   `;
 
@@ -30,13 +36,18 @@ const runPrompt = async (searchText: any) => {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
-    max_tokens: type === "hint" ? 500 : undefined,
+    max_tokens: 500,
     temperature: 0.6,
   });
 
   console.log(response.data.choices[0].text);
 
-  const parasableJSONResponse = response.data.choices[0].text;
+  const inputString = response.data.choices[0].text;
+
+  const startIndex = inputString.indexOf("{");
+  const jsonString = inputString.slice(startIndex);
+
+  const parasableJSONResponse = jsonString;
   let parsedResponse = "";
   parasableJSONResponse
     ? (parsedResponse = JSON.parse(parasableJSONResponse))

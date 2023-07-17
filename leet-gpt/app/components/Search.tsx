@@ -26,13 +26,13 @@ export default function Search() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-5">
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <input
           type="text"
           placeholder="Enter your problem"
           onChange={handleChange}
-          className="py-4 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500"
+          className="py-2 mt-2 border border-gray-300 rounded-md px-7 focus:outline-none focus:border-green-500"
           required
         />
 
