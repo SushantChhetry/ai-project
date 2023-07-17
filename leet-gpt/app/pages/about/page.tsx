@@ -1,12 +1,15 @@
 import BackHome from "@/app/components/BackHome";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Page() {
   return (
     <div className="flex flex-col items-center min-h-screen p-24">
-      <div className="container p-6 mx-auto">
-        <h1 className="mb-4 text-4xl font-bold">About LeetGPT</h1>
-
+      <div className="container p-1 mx-auto">
+        <span className="inline-block">
+          <h1 className="mb-4 text-4xl font-bold">About LeetGPT</h1>
+          <Image src={"/LEETGPT.png"} alt="logo" width={100} height={100} />
+        </span>
         <p className="mb-4 text-lg">
           LeetGPT is a powerful tool designed to assist you in solving LeetCode
           problems by providing hints and guidance.
