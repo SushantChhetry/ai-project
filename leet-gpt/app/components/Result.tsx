@@ -9,9 +9,9 @@ type Props = {
 export default function Result({ searchText }: Props) {
   const [search, setSearch] = useState(searchText);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState<boolean | undefined>(false);
 
-  const [result, setResult] = useState({
+  const [result, setResult] = useState<{ Q: string; A: string } | undefined>({
     Q: "",
     A: "",
   });
@@ -24,12 +24,14 @@ export default function Result({ searchText }: Props) {
       try {
         setSearch(searchText);
         let results = await runPrompt(searchText);
-        setResult(results);
-        console.log(result);
+        if (typeof results === "string") {
+          setResult({ Q: "", A: results });
+        } else {
+          setResult(results);
+          console.log(result);
+        }
       } catch (error) {
         setIsError(true);
-        throw new Error(error);
-        console.log(error);
       } finally {
         setIsLoading(false);
         setIsError(false);
@@ -59,11 +61,11 @@ export default function Result({ searchText }: Props) {
         "Oops something went wrong . . ."
       ) : (
         <p className="mt-2">
-          {searchText.type === "hint" ? (
+          {result && searchText.type === "hint" ? (
             result.A
           ) : (
             <Link
-              href={result.A}
+              href={result?.A ?? "Click to see solution"}
               className="hover:text-green-400 transition-colors duration-300"
               target="_blank"
             >

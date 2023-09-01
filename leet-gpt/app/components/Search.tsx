@@ -2,7 +2,7 @@
 
 import React from "react";
 import Result from "./Result";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Search() {
   const [formData, setFormData] = useState({ type: "", prompt: "" });
