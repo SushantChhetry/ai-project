@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SignOut from "./sign-out";
 
 export default function Nav() {
   return (
@@ -25,6 +26,7 @@ export default function Nav() {
                   Study Plan
                 </Link>{" "}
               </li>
+              <SignOut />
             </ul>
           </div>
         </div>

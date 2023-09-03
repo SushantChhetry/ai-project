@@ -30,20 +30,13 @@ export default async function Home() {
             className=" py-6"
           />
           <h1 className="text-4xl font-semibold">
-            {" "}
-            <span className="font-mono ">
-              Leet
-              <Link
-                href="/protected"
-                prefetch={false} // workaround until https://github.com/vercel/vercel/pull/8978 is deployed
-                className="text-stone-400 underline hover:text-stone-200 transition-all"
-              >
-                Protected Page
-              </Link>
-            </span>{" "}
+            <span className="font-mono ">Leet</span>
             GPT
           </h1>
-          <Link href="/api/auth/signin">
+          <Link
+            href="/protected"
+            prefetch={false} // workaround until https://github.com/vercel/vercel/pull/8978 is deployed
+          >
             <button className="max-w-sm px-4 py-2 mt-4 font-bold text-white bg-green-500 border-b-4 border-green-700 rounded w hover:bg-green-400 hover:border-green-500">
               Sign In
             </button>
